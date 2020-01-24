@@ -1,12 +1,16 @@
+Analiza danych statystycznych dotyczących liczby studentów według typów
+uczelni w Polsce w latach 2000-2018
+================
+
 Przedstawione dane odnoszą się do liczby studentów wg typów uczelni w
 latach 2000 - 2018. Dotyczą one wszystkich rodzajów studiów zarówno
 magisterskich jednolitych, jak i pierwszego oraz drugiego stopnia.
 Wzięto pod uwagę uniwersytety, uczelnie techniczne, rolnicze,
 ekonomiczne, pedagogiczne, morskie, medyczne, artystyczne, teologiczne i
-akademie wychowania fizycznego.
+akademie wychowania
+fizycznego.
 
-Liczba studentów według typów uczelni na podstawie danych Głównego Urzędu Statystycznego
-----------------------------------------------------------------------------------------
+## Liczba studentów według typów uczelni na podstawie danych Głównego Urzędu Statystycznego
 
 ``` r
 tabela
@@ -39,15 +43,14 @@ tabela
     ## #   fizycznego` <dbl>, `Uczelnie artystyczne` <dbl>, `Uczelnie
     ## #   teologiczne` <dbl>
 
-Ogólna liczba studentów na wszystkich typach uczelni w latach 2000 - 2018
--------------------------------------------------------------------------
+## Ogólna liczba studentów na wszystkich typach uczelni w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
 barplot(tabela$Ogolem,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(600000,max(tabela$Ogolem)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_ogolnie-1.png)
+![](Project_files/figure-gfm/wykres_ogolnie-1.png)<!-- -->
 
 Średnia roczna liczba studentów na wszystkich typach uczelni:
 
@@ -151,8 +154,7 @@ maturzysci
     ## 12  2017     258030  1038346  780316
     ## 13  2018     247840   981470  733630
 
-Wykres przedstawiający zależność liczby studentów od liczby maturzystów na przestrzeni lat wraz z dopasowaną regresją liniową.
-------------------------------------------------------------------------------------------------------------------------------
+## Wykres przedstawiający zależność liczby studentów od liczby maturzystów na przestrzeni lat wraz z dopasowaną regresją liniową.
 
 ``` r
 model <- lm( Maturzysci ~ Studenci, data=maturzysci)
@@ -161,14 +163,13 @@ abline(model)
  grid()
 ```
 
-![](Project_files/figure-markdown_github/wykres_ogolnie2-1.png) <br />Na
+![](Project_files/figure-gfm/wykres_ogolnie2-1.png)<!-- --> <br />Na
 podstawie powyższego wykresu można wyciągnąć wnioski, że liczba
 studentów jest liniowo skorelowana z liczbą maturzystów. <br />Więcej
 wniosków i przypuszczeń postaramy się zawrzeć w podsumowaniu.
 <br /><br />
 
-Rozkład studentów na poszczególne uczelnie w 2000 roku
-------------------------------------------------------
+## Rozkład studentów na poszczególne uczelnie w 2000 roku
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -176,10 +177,9 @@ options(scipen=5)
 barplot( df2$"2000",ylab="Liczba studentów",las=2,names.arg=c("Uniwesytety", "Techniczne", "Rolnicze", "Ekonomiczne", "Pedagogiczne", "Morskie", "Medyczne", "AWF", "Artystyczne", "Teologiczne"),ylim=c(0,520000),xpd=FALSE,col="burlywood3",beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](Project_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
-Rozkład studentów na poszczególne uczelnie w 2018 roku w tej samej skali co poprzedni wykres
---------------------------------------------------------------------------------------------
+## Rozkład studentów na poszczególne uczelnie w 2018 roku w tej samej skali co poprzedni wykres
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -187,7 +187,7 @@ options(scipen=5)
 barplot( df2$"2018",ylab="Liczba studentów",las=2,names.arg=c("Uniwesytety", "Techniczne", "Rolnicze", "Ekonomiczne", "Pedagogiczne", "Morskie", "Medyczne", "AWF", "Artystyczne", "Teologiczne"),ylim=c(0,520000),xpd=FALSE,col="burlywood3",beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](Project_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 Na podstawie powyższych wykresów można zauważyć, że mimo upływu lat
 rozkład studentów na poszczególnych uczelniach nie zmienił się
@@ -196,8 +196,7 @@ Widocznymi wyjątkami są uczelnie ekonomiczne, które zanotowały wyraźny
 spadek popularności oraz uczelnie medyczne, którymi zainteresowanie
 wciąż rośnie.
 
-Liczba studentów na uniwersytetach w latach 2000 - 2018
--------------------------------------------------------
+## Liczba studentów na uniwersytetach w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -205,7 +204,7 @@ options(scipen=5)
 barplot(tabela$Uniwersytety,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(100000,max(tabela$Uniwersytety)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_uniwersytety-1.png)
+![](Project_files/figure-gfm/wykres_uniwersytety-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uniwersytetach:
 
@@ -304,8 +303,7 @@ roku. Rozstęp próby wyniósł więc 199 782. <br/> 6. Liczba studentów na
 uniwersytetach w stosunku do uczelni wyższych wzrosła o ok. 7 punktów
 procentowych w latach 2000 - 2018.
 
-Liczba studentów na uczelniach technicznych w latach 2000 - 2018
-----------------------------------------------------------------
+## Liczba studentów na uczelniach technicznych w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -313,7 +311,7 @@ options(scipen=5)
 barplot(tabela$`Uczelnie techniczne`,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(100000,max(tabela$`Uczelnie techniczne`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_techniczne-1.png)
+![](Project_files/figure-gfm/wykres_techniczne-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uczelniach technicznych:
 
@@ -413,8 +411,7 @@ liczbie 344 906 zaobserwowano w 2002 roku, a najmniejszą wynoszącą 235
 studentów na uczelniach technicznych w stosunku do uczelni wyższych
 wzrosła o ok. 2 punktów procentowych w latach 2000 - 2018.
 
-Liczba studentów na uczelniach rolniczych w latach 2000 - 2018
---------------------------------------------------------------
+## Liczba studentów na uczelniach rolniczych w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -422,7 +419,7 @@ options(scipen=5)
 barplot(tabela$`Uczelnie rolnicze`,xlab="Lata",ylab="Ilość studentów",names.arg=c(2000:2018),las=2,ylim=c(20000,max(tabela$`Uczelnie rolnicze`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_rolnicze-1.png)
+![](Project_files/figure-gfm/wykres_rolnicze-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uczelniach rolniczych:
 
@@ -522,8 +519,7 @@ Rozstęp próby wyniósł więc 50 949. <br/> 6. Liczba studentów na
 uczelniach rolniczych w stosunku do uczelni wyższych nieznacznie zmalała
 o ok. 0.2 punktów procentowych w latach 2000 - 2018.
 
-Liczba studentów na uczelniach ekonomicznych w latach 2000 - 2018
------------------------------------------------------------------
+## Liczba studentów na uczelniach ekonomicznych w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -531,7 +527,7 @@ options(scipen=5)
 barplot(tabela$`Uczelnie ekonomiczne`,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(100000,max(tabela$`Uczelnie ekonomiczne`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_ekonomiczne-1.png)
+![](Project_files/figure-gfm/wykres_ekonomiczne-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uczelniach ekonomicznych:
 
@@ -631,8 +627,7 @@ liczbie 407 755 zaobserwowano w 2005 roku, a najmniejszą wynoszącą 172
 studentów na uczelniach ekonomicznych w stosunku do uczelni wyższych
 zmalała o ok. 8 punktów procentowych w latach 2000 - 2018.
 
-Liczba studentów na uczelniach pedagogicznych w latach 2000 - 2018
-------------------------------------------------------------------
+## Liczba studentów na uczelniach pedagogicznych w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -640,7 +635,7 @@ options(scipen=5)
 barplot(tabela$`Uczelnie pedagogiczne`,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(20000,max(tabela$`Uczelnie pedagogiczne`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_pedagogiczne-1.png)
+![](Project_files/figure-gfm/wykres_pedagogiczne-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uczelniach pedagogicznych:
 
@@ -740,8 +735,7 @@ liczbie 148 293 zaobserwowano w 2000 roku, a najmniejszą wynoszącą 39
 studentów na uczelniach pedagogicznych w stosunku do uczelni wyższych
 zmalała o ok. 6 punktów procentowych w latach 2000 - 2018.
 
-Liczba studentów na uczelniach morskich w latach 2000 - 2018
-------------------------------------------------------------
+## Liczba studentów na uczelniach morskich w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -749,7 +743,7 @@ options(scipen=5)
 barplot(tabela$`Uczelnie morskie`,xlab="Lata",ylab="Ilość studentów",names.arg=c(2000:2018),las=2,ylim=c(2000,max(tabela$`Uczelnie morskie`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_morskie-1.png)
+![](Project_files/figure-gfm/wykres_morskie-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uczelniach morskich:
 
@@ -849,8 +843,7 @@ najmniejszą wynoszącą 7 387 w 2018 roku. Rozstęp próby wyniósł więc 5
 wyższych nieznacznie wzrosła o ok. 0.06 punktów procentowych w latach
 2000 - 2018.
 
-Liczba studentów na uniwersytetach medycznych w latach 2000 - 2018
-------------------------------------------------------------------
+## Liczba studentów na uniwersytetach medycznych w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -858,7 +851,7 @@ options(scipen=5)
 barplot(tabela$`Uniwersytety medyczne`,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(10000,max(tabela$`Uniwersytety medyczne`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_medyczne-1.png)
+![](Project_files/figure-gfm/wykres_medyczne-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uniwersytetach medycznych:
 
@@ -956,10 +949,10 @@ uniwersytetach medycznych w ciągu roku znajduje się w przedziale od 42
 medycznych w liczbie 65 423 zaobserwowano w 2018 roku, a najmniejszą
 wynoszącą 29 487 w 2000 roku. Rozstęp próby wyniósł więc 35 936. <br/>
 6. Liczba studentów na uniwersytetach medycznych w stosunku do uczelni
-wyższych wzrosła o ok. 4.5 punktów procentowych w latach 2000 - 2018.
+wyższych wzrosła o ok. 4.5 punktów procentowych w latach 2000 -
+2018.
 
-Liczba studentów na akademiach wychowania fizycznego w latach 2000 - 2018
--------------------------------------------------------------------------
+## Liczba studentów na akademiach wychowania fizycznego w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -967,7 +960,7 @@ options(scipen=5)
 barplot(tabela$`Akademie wychowania fizycznego`,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(10000,max(tabela$`Akademie wychowania fizycznego`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_wf-1.png)
+![](Project_files/figure-gfm/wykres_wf-1.png)<!-- -->
 
 Średnia roczna liczba studentów na akademiach wychowania fizycznego:
 
@@ -1068,8 +1061,7 @@ najmniejszą wynoszącą 19 383 w 2018 roku. Rozstęp próby wyniósł więc 9
 stosunku do uczelni wyższych nieznacznie wzrosła o ok. 0.4 punktów
 procentowych w latach 2000 - 2018.
 
-Liczba studentów na uczelniach artystycznych w latach 2000 - 2018
------------------------------------------------------------------
+## Liczba studentów na uczelniach artystycznych w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -1077,7 +1069,7 @@ options(scipen=5)
 barplot(tabela$`Uczelnie artystyczne`,xlab="Lata",ylab="Liczba studentów",names.arg=c(2000:2018),las=2,ylim=c(10000,max(tabela$`Uczelnie artystyczne`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_artystyczne-1.png)
+![](Project_files/figure-gfm/wykres_artystyczne-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uczelniach artystycznych:
 
@@ -1177,8 +1169,7 @@ w 2000 roku. Rozstęp próby wyniósł więc 4 462. <br/> 6. Liczba studentów
 na uczelniach artystycznych w stosunku do uczelni wyższych wzrosła o ok.
 1 punkt procentowy w latach 2000 - 2018.
 
-Liczba studentów na uczelniach teologicznych w latach 2000 - 2018
------------------------------------------------------------------
+## Liczba studentów na uczelniach teologicznych w latach 2000 - 2018
 
 ``` r
 par(mar=c(8,8,0,3), mgp=c(7,2,0))
@@ -1186,7 +1177,7 @@ options(scipen=5)
 barplot(tabela$`Uczelnie teologiczne`,xlab="Lata",ylab="Ilość studentów",names.arg=c(2000:2018),las=2,ylim=c(2000,max(tabela$`Uczelnie teologiczne`)), xpd=FALSE, col="burlywood3", beside=TRUE)
 ```
 
-![](Project_files/figure-markdown_github/wykres_teologiczne-1.png)
+![](Project_files/figure-gfm/wykres_teologiczne-1.png)<!-- -->
 
 Średnia roczna liczba studentów na uczelniach teologicznych:
 
@@ -1286,8 +1277,7 @@ w 2018 roku. Rozstęp próby wyniósł więc 5 932. <br/> 6. Liczba studentów
 na uczelniach teologicznych w stosunku do uczelni wyższych zmalała
 nieznacznie o ok. 0.13 punktów procentowych w latach 2000 - 2018.
 
-Wnioski
--------
+## Wnioski
 
 <br />Trend Liczby studentów na przestrzeni lat jest wyraźnie spadkowy.
 Na taki stan rzeczy może wpływać wiele czynników. Wykres przedstawiający
@@ -1320,10 +1310,10 @@ wskazuje na wzrost ich popularności.
 <br/>Podsumowując uczelnie wyższe wciąż przyciągają szerogie grono
 studentów. Dzięki nim mogą oni postawić pierwsze kroki na rynku pracy,
 poznać wielu ciekawych ludzi i przede wszystkim się rozwijać. <br/>
-<br/> <br/> <br/>
+<br/> <br/>
+<br/>
 
-Projekt wykonali:
------------------
+## Projekt wykonali:
 
 ### [Aleksandra Mazur](https://github.com/alexmaz99), [Grzegorz Poręba](https://github.com/Wokstym)
 
