@@ -1,15 +1,16 @@
-from pylab import *
+import numpy as np
+import matplotlib.pyplot as plt
 from scipy.integrate import quad
 
 # for this data we should expect exp(-1) function as a result
-fa = lambda x: 0
-fb = lambda x: 1
-fc = lambda x: 2
-f = lambda x: np.exp(-x)
+fa = lambda x: 2
+fb = lambda x: -3
+fc = lambda x: 1
+f = lambda x: x**2
 beta = 1
-gamma = 1
-u1 = np.exp(-1)
-N = 1000
+gamma = 2
+uR = -1
+N = 10
 
 
 def l_v(v, start, end):
@@ -24,8 +25,8 @@ def b_u_v(u_der, v_der, u, v, start, end):
 
 
 def e(i, n):
-    return lambda x: 1.0 - abs(n * (x - double(i) / n)) \
-        if (1.0 - abs(n * (x - double(i) / n)) >= 0) \
+    return lambda x: 1.0 - abs(n * (x - i / n)) \
+        if (1.0 - abs(n * (x - i / n)) >= 0) \
         else 0.0
 
 
@@ -36,7 +37,7 @@ def e_der(i, n):
 
 
 def main():
-    zeros_matrix = zeros((N, N))
+    zeros_matrix = np.zeros((N, N))
 
     for i in range(0, N):
         for j in range(0, N):
@@ -51,33 +52,33 @@ def main():
                 start = max(0.0, (i - 1) / N)
                 end = min(1.0, (i + 1) / N)
 
-            zeros_matrix[i][j] = b_u_v(e_der(i, N), e_der(j, N), e(i, N), e(j, N), start, end)
+            zeros_matrix[i][j] = b_u_v(e_der(j, N), e_der(i, N), e(j, N), e(i, N), start, end)
 
-    right = zeros(N)
+    right = np.zeros(N)
 
     for i in range(0, N):
         right[i] = l_v(e(i, N), max(0.0, (i - 1) / N), min(1.0, (i + 1) / N))
 
-    shift = zeros(N)
+    shift = np.zeros(N)
     for i in range(0, N):
-        shift[i] = b_u_v(lambda x: u1, e_der(i, N), lambda x: u1 * x, e(i, N),
+        shift[i] = b_u_v(lambda x: uR, e_der(i, N), lambda x: uR * x, e(i, N),
                          max(0.0, (i - 1) / N),
                          min(1.0, (i + 1) / N))
 
     right -= shift
 
-    fu = linalg.solve(zeros_matrix, right)
+    fu = np.linalg.solve(zeros_matrix, right)
 
-    fux = arange(0.0, 1.0, 0.01)
-    fuy = zeros(100)
-    for i in range(0, 100):
+    fux = np.arange(0.0, 1.0, 0.001)
+    fuy = np.zeros(1000)
+    for i in range(0, 1000):
         for j in range(0, N):
             fuy[i] += fu[j] * e(j, N)(fux[i])
-        fuy[i] += fux[i] * u1
+        fuy[i] += fux[i] * uR
 
     print(fuy)
-    plot(fux, fuy)
-    show()
+    plt.plot(fux, fuy)
+    plt.show()
 
 
 if __name__ == "__main__":
