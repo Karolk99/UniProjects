@@ -3,7 +3,7 @@ title: "Analiza danych statystycznych dotyczących liczby studentów według typ
 output:
   html_document:
     df_print: paged
-  pdf_document: default
+  github_document
 ---
 
 ```{r setup, include=FALSE}
